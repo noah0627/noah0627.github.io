@@ -14,10 +14,8 @@
         body {
             font-family: 'Microsoft YaHei', Arial, sans-serif;
             min-height: 100vh;
-            /* 背景图+模糊效果（可替换为自己的背景图链接） */
             background: url('https://noah0627.github.io/static/img/background.jpg') no-repeat center center;
             background-size: cover;
-            /* 背景模糊核心：backdrop-filter + 半透明底色增强层次感 */
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px); /* 兼容Safari */
             background-color: rgba(255, 255, 255, 0.3);
@@ -65,16 +63,13 @@
 
         /* 核心：卡片毛玻璃效果 */
         .project-item {
-            /* 半透明底色+模糊，毛玻璃核心 */
             background-color: rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            /* 圆角+阴影：增强立体感 */
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             padding: 20px;
             margin-bottom: 20px;
-            /* 过渡效果：hover时更丝滑 */
             transition: all 0.3s ease;
         }
         /* 卡片hover交互：轻微上浮+阴影加深 */
@@ -97,8 +92,8 @@
             margin-left: 15px;
         }
 
-        /* 链接样式：统一蓝色+hover效果 */
-        .download-links a, .external-links a {
+        /* 下载链接样式：统一蓝色+hover效果 */
+        .download-links a {
             display: inline-block;
             margin: 0 15px 8px 0; /* 横向+纵向间距，避免拥挤 */
             color: #2563eb;
@@ -107,18 +102,55 @@
             border-radius: 4px;
             transition: background-color 0.2s ease;
         }
-        .download-links a:hover, .external-links a:hover {
+        .download-links a:hover {
             background-color: rgba(59, 130, 246, 0.15);
             text-decoration: underline;
         }
 
-        /* 外部链接区域：与项目区区分 */
+        /* 外部链接区域：图片形式调整 */
         .external-links {
             margin-top: 40px;
         }
-        .link-list li {
-            margin-bottom: 12px;
-            font-size: 15px;
+        .link-list {
+            /* 弹性布局：让图片链接横向排列，自适应换行 */
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px; /* 链接之间的间距 */
+            justify-content: center; /* 水平居中 */
+            margin-top: 15px;
+        }
+        .link-item {
+            /* 每个链接容器：垂直居中文字和图片 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 80px; /* 固定宽度，避免排列混乱 */
+        }
+        /* 图标图片样式：统一大小+毛玻璃圆角 */
+        .link-icon {
+            width: 50px;
+            height: 50px;
+            object-fit: contain; /* 保持图片比例，不拉伸 */
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        /* 图标hover交互：放大+加深阴影 */
+        .link-item:hover .link-icon {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        /* 链接文字：统一颜色+居中 */
+        .link-text {
+            margin-top: 8px;
+            color: #2d3748;
+            font-size: 14px;
+            text-align: center;
+        }
+        .external-links a {
+            text-decoration: none;
         }
     </style>
 </head>
@@ -173,25 +205,50 @@
                     <a href="https://noah0627.github.io/Programs/MusicResourcePacks/kzsmusic.zip">匡zs鬼畜资源包</a>
                 </div>
             </li>
-			
-			<li class="project-item">
+            
+            <li class="project-item">
                 <div class="project-name">我做的其他项目(除标注外都是根据XDFPython课程修改,编译版源代码在Github上)</div>
                 <div class="download-links">
                     <a href="https://noah0627.github.io/Programs/encrypt.zip">凯撒加密</a>
                     <a href="https://noah0627.github.io/Programs/star-battle-v2.0.0-Final-x64.zip">星际大战(编译版)</a>
                     <a href="https://noah0627.github.io/Programs/PyModIns_Release2.0.2_x64.exe">Python模块安装器(自制,编译版)</a>
-					<a href="https://noah0627.github.io/Programs/简洁学习助手.py">比赛项目(学习助手,自制)</a>
+                    <a href="https://noah0627.github.io/Programs/简洁学习助手.py">比赛项目(学习助手,自制)</a>
                 </div>
             </li>
         </ul>
 
-        <!-- 外部链接区 -->
+        <!-- 外部链接区：图片形式 -->
         <div class="external-links">
             <h2 class="section-title">外部链接</h2>
             <ul class="link-list">
-                <li><a href="https://space.bilibili.com/1722310137">B站</a></li>
-                <li><a href="https://github.com/noah0627">Github</a></li>
-                <li><a href="https://code.xdf.cn/oj/user-home?uid=22fa2c53eee4482f80e82825f5553540&username=HZ2037802767">XDFOJ</a></li>
+                <!-- B站链接 -->
+                <li class="link-item">
+                    <a href="https://space.bilibili.com/1722310137" target="_blank">
+                        <img src="https://www.bilibili.com/favicon.ico" alt="B站图标" class="link-icon">
+                        <span class="link-text">B站账号</span>
+                    </a>
+                </li>
+                <!-- 微博链接 -->
+                <li class="link-item">
+                    <a href="https://www.weibo.com/u/5286052169" target="_blank">
+                        <img src="https://www.weibo.com/favicon.ico" alt="微博图标" class="link-icon">
+                        <span class="link-text">微博账号</span>
+                    </a>
+                </li>
+                <!-- Github链接 -->
+                <li class="link-item">
+                    <a href="https://github.com/noah0627" target="_blank">
+                        <img src="https://github.githubassets.com/favicons/favicon.png" alt="Github图标" class="link-icon">
+                        <span class="link-text">Github</span>
+                    </a>
+                </li>
+                <!-- XDFOJ链接 -->
+                <li class="link-item">
+                    <a href="https://code.xdf.cn/oj/user-home?uid=22fa2c53eee4482f80e82825f5553540&username=HZ2037802767" target="_blank">
+                        <img src="https://code.xdf.cn/favicon.ico" alt="XDFOJ图标" class="link-icon">
+                        <span class="link-text">XDFOJ</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
