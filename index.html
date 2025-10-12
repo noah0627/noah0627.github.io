@@ -5,124 +5,185 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Noah的官方网站</title>
     <style>
+        /* 基础样式：背景模糊+全局重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            min-height: 100vh;
+            /* 背景图+模糊效果（可替换为自己的背景图链接） */
+            background: url('https://noah0627.github.io/static/img/background.jpg') no-repeat center center;
+            background-size: cover;
+            /* 背景模糊核心：backdrop-filter + 半透明底色增强层次感 */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px); /* 兼容Safari */
+            background-color: rgba(255, 255, 255, 0.3);
+            padding: 30px 20px;
+            line-height: 1.7;
+        }
+
+        /* 容器：限制宽度+居中，增强内容聚焦 */
+        .container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
-            line-height: 1.6;
         }
+
+        /* 标题样式：与毛玻璃风格适配 */
         .site-title {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-        .notice {
-            color: #666;
+            color: #2d3748;
+            text-align: center;
+            padding-bottom: 12px;
             margin-bottom: 30px;
+            border-bottom: 2px solid rgba(59, 130, 246, 0.5);
+            letter-spacing: 1px;
         }
+
+        /* 开发提示：柔和提示色 */
+        .notice {
+            color: #4a5568;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 15px;
+        }
+
+        /*  section标题：强调分区 */
         .section-title {
-            color: #3498db;
-            margin: 20px 0 10px 0;
+            color: #2563eb;
+            margin: 30px 0 15px 0;
+            padding-left: 10px;
+            border-left: 4px solid #3b82f6;
         }
+
+        /* 列表重置 */
         .project-list, .link-list {
             list-style-type: none;
             padding: 0;
         }
+
+        /* 核心：卡片毛玻璃效果 */
         .project-item {
-            background: #f8f9fa;
-            border-radius: 5px;
-            padding: 15px;
-            margin-bottom: 15px;
+            /* 半透明底色+模糊，毛玻璃核心 */
+            background-color: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            /* 圆角+阴影：增强立体感 */
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+            margin-bottom: 20px;
+            /* 过渡效果：hover时更丝滑 */
+            transition: all 0.3s ease;
         }
+        /* 卡片hover交互：轻微上浮+阴影加深 */
+        .project-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* 项目名称：加粗强调 */
         .project-name {
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 8px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 10px;
+            font-size: 16px;
         }
+
+        /* 下载链接区域：缩进对齐 */
         .download-links {
-            margin-left: 20px;
+            margin-left: 15px;
         }
-        .download-links a {
+
+        /* 链接样式：统一蓝色+hover效果 */
+        .download-links a, .external-links a {
             display: inline-block;
-            margin-right: 15px;
-            color: #3498db;
+            margin: 0 15px 8px 0; /* 横向+纵向间距，避免拥挤 */
+            color: #2563eb;
             text-decoration: none;
+            padding: 2px 4px;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
         }
-        .download-links a:hover {
+        .download-links a:hover, .external-links a:hover {
+            background-color: rgba(59, 130, 246, 0.15);
             text-decoration: underline;
         }
+
+        /* 外部链接区域：与项目区区分 */
         .external-links {
-            margin-top: 30px;
+            margin-top: 40px;
         }
-        .external-links a {
-            color: #3498db;
-            text-decoration: none;
-        }
-        .external-links a:hover {
-            text-decoration: underline;
+        .link-list li {
+            margin-bottom: 12px;
+            font-size: 15px;
         }
     </style>
 </head>
 <body>
-    <h1 class="site-title">Noah的官方网站</h1>
-    <p class="notice">目前网站剩余部分正在开发中，敬请期待！</p>
+    <div class="container">
+        <h1 class="site-title">Noah的官方网站</h1>
+        <p class="notice">目前网站剩余部分正在开发中，敬请期待！</p>
 
-    <h2 class="section-title">项目下载</h2>
-    <ul class="project-list">
-        <li class="project-item">
-            <div class="project-name">爆破任务游戏(整活)</div>
-            <div class="download-links">
-                <a href="https://noah0627.github.io/Programs/dhy/Game/Mac.zip">Mac版</a>
-                <a href="https://noah0627.github.io/Programs/dhy/Game/Windows.zip">Windows版</a>
-            </div>
-        </li>
-        
-        <li class="project-item">
-            <div class="project-name">jyn作业查看器</div>
-            <div class="download-links">
-                <a href="https://noah0627.github.io/Programs/dhy/jyn作业查看器.exe">C++版</a>
-                <a href="https://noah0627.github.io/Programs/dhy/HomeworkCheckerCs.zip">C#版(比C++更狠，感兴趣可以看)</a>
-            </div>
-        </li>
-        
-        <li class="project-item">
-            <div class="download-links">
-                <a href="https://noah0627.github.io/Programs/dhy/kzsgc.mp4">匡zs鬼畜视频</a>
-            </div>
-        </li>
-        
-        <li class="project-item">
-            <div class="download-links">
-                <a href="https://noah0627.github.io/Programs/dhy/连续打印器.exe">C++连续打印器(含有音乐)</a>
-            </div>
-        </li>
-        
-        <li class="project-item">
-            <div class="download-links">
-                <a href="https://noah0627.github.io/Programs/dhy/readme.txt">readme</a>
-            </div>
-        </li>
-		
-		<li class="project-item">
-            <div class="project-name">音乐资源包(1.20.1)</div>
-            <div class="download-links">
-                <a href="https://noah0627.github.io/Programs/MusicResourcePacks/music1.zip">1.0</a>
-				<a href="https://noah0627.github.io/Programs/MusicResourcePacks/music2.zip">2.0</a>
-				<a href="https://noah0627.github.io/Programs/MusicResourcePacks/music3.zip">3.0</a>
-				<a href="https://noah0627.github.io/Programs/MusicResourcePacks/kzsmusic.zip">匡zs鬼畜资源包</a>
-            </div>
-        </li>
-    </ul>
-
-    <div class="external-links">
-        <h2 class="section-title">外部链接</h2>
-        <ul class="link-list">
-            <li><a href="https://space.bilibili.com/1722310137">B站</a></li>
-			<li><a href="https://github.com/noah0627">Github</a></li>
-			<li><a href="https://code.xdf.cn/oj/user-home?uid=22fa2c53eee4482f80e82825f5553540&username=HZ2037802767">XDFOJ</a></li>
+        <!-- 项目下载区 -->
+        <h2 class="section-title">项目下载</h2>
+        <ul class="project-list">
+            <li class="project-item">
+                <div class="project-name">爆破任务游戏(整活)</div>
+                <div class="download-links">
+                    <a href="https://noah0627.github.io/Programs/dhy/Game/Mac.zip">Mac版</a>
+                    <a href="https://noah0627.github.io/Programs/dhy/Game/Windows.zip">Windows版</a>
+                </div>
+            </li>
+            
+            <li class="project-item">
+                <div class="project-name">jyn作业查看器</div>
+                <div class="download-links">
+                    <a href="https://noah0627.github.io/Programs/dhy/jyn作业查看器.exe">C++版</a>
+                    <a href="https://noah0627.github.io/Programs/dhy/HomeworkCheckerCs.zip">C#版(比C++更狠，感兴趣可以看)</a>
+                </div>
+            </li>
+            
+            <li class="project-item">
+                <div class="download-links">
+                    <a href="https://noah0627.github.io/Programs/dhy/kzsgc.mp4">匡zs鬼畜视频</a>
+                </div>
+            </li>
+            
+            <li class="project-item">
+                <div class="download-links">
+                    <a href="https://noah0627.github.io/Programs/dhy/连续打印器.exe">C++连续打印器(含有音乐)</a>
+                </div>
+            </li>
+            
+            <li class="project-item">
+                <div class="download-links">
+                    <a href="https://noah0627.github.io/Programs/dhy/readme.txt">readme</a>
+                </div>
+            </li>
+            
+            <li class="project-item">
+                <div class="project-name">音乐资源包(1.20.1)</div>
+                <div class="download-links">
+                    <a href="https://noah0627.github.io/Programs/MusicResourcePacks/music1.zip">1.0</a>
+                    <a href="https://noah0627.github.io/Programs/MusicResourcePacks/music2.zip">2.0</a>
+                    <a href="https://noah0627.github.io/Programs/MusicResourcePacks/music3.zip">3.0</a>
+                    <a href="https://noah0627.github.io/Programs/MusicResourcePacks/kzsmusic.zip">匡zs鬼畜资源包</a>
+                </div>
+            </li>
         </ul>
+
+        <!-- 外部链接区 -->
+        <div class="external-links">
+            <h2 class="section-title">外部链接</h2>
+            <ul class="link-list">
+                <li><a href="https://space.bilibili.com/1722310137">B站</a></li>
+                <li><a href="https://github.com/noah0627">Github</a></li>
+                <li><a href="https://code.xdf.cn/oj/user-home?uid=22fa2c53eee4482f80e82825f5553540&username=HZ2037802767">XDFOJ</a></li>
+            </ul>
+        </div>
     </div>
 </body>
 </html>
