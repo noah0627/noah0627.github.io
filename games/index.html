@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noah的游戏站</title>
+    <!-- 添加标签页图标 -->
+    <link rel="icon" href="https://noah0627.github.io/static/img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="https://noah0627.github.io/static/img/favicon.png" type="image/png" sizes="32x32">
+    
+    <style>
+        /* 基础样式：背景模糊+全局重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            min-height: 100vh;
+            background: url('https://noah0627.github.io/static/img/background.jpg') no-repeat center center;
+            background-size: cover;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px); /* 兼容Safari */
+            background-color: rgba(255, 255, 255, 0.3);
+            padding: 30px 20px;
+            line-height: 1.7;
+            color: #2d3748;
+        }
+
+        /* 容器：限制宽度+居中，增强内容聚焦 */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* 标题样式：与毛玻璃风格适配 */
+        .site-title {
+            color: #2d3748;
+            text-align: center;
+            padding-bottom: 12px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid rgba(59, 130, 246, 0.5);
+            letter-spacing: 1px;
+        }
+
+        /* 导航链接：返回主站 */
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #2563eb;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+        .back-link:hover {
+            background-color: rgba(59, 130, 246, 0.15);
+            text-decoration: underline;
+        }
+
+        /*  section标题：强调分区 */
+        .section-title {
+            color: #2563eb;
+            margin: 30px 0 15px 0;
+            padding-left: 10px;
+            border-left: 4px solid #3b82f6;
+        }
+
+        /* 游戏卡片样式 */
+        .game-card {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 10px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            align-items: center;
+        }
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* 游戏图片预览 */
+        .game-preview {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .game-preview img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .game-card:hover .game-preview img {
+            transform: scale(1.03);
+        }
+
+        /* 游戏信息区域 */
+        .game-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        .game-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 15px;
+        }
+        .game-description {
+            margin-bottom: 20px;
+            color: #475569;
+            line-height: 1.8;
+        }
+        .game-features {
+            margin-bottom: 25px;
+        }
+        .game-features li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .game-features li:before {
+            content: "•";
+            color: #2563eb;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* 游戏按钮样式 */
+        .play-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #2563eb;
+            color: #ffffff !important;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-right: 15px;
+        }
+        .play-button:hover {
+            background-color: #1d4ed8;
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            text-decoration: none !important;
+        }
+
+        .more-games {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 8px;
+        }
+        .more-games p {
+            margin-bottom: 15px;
+            color: #475569;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .game-card {
+                flex-direction: column;
+            }
+            .game-preview, .game-info {
+                min-width: 100%;
+            }
+            .play-button {
+                display: block;
+                text-align: center;
+                margin-bottom: 10px;
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 返回主站链接 -->
+        <a href="https://noah0627.github.io" class="back-link">← 返回个人主页</a>
+        
+        <h1 class="site-title">Noah的游戏页面</h1>
+
+        <!-- 汉诺塔游戏卡片 -->
+        <div class="game-card">
+            <div class="game-preview">
+                <!-- 汉诺塔游戏预览图 -->
+                <img src="https://picsum.photos/id/160/600/400" alt="汉诺塔游戏预览" />
+            </div>
+            <div class="game-info">
+                <h2 class="game-name">汉诺塔</h2>
+                <p class="game-description">
+                    经典的汉诺塔益智游戏，考验你的逻辑思维和问题解决能力。游戏目标是将所有圆盘从第一个柱子移动到最后一个柱子，每次只能移动一个圆盘，且不能将较大的圆盘放在较小的圆盘上面。
+                </p>
+                <ul class="game-features">
+                    <li>支持不同难度级别（3-8个圆盘）</li>
+                    <li>记录移动步数和用时</li>
+                    <li>简洁直观的界面设计</li>
+                    <li>完全响应式，适配各种设备</li>
+                </ul>
+                <a href="https://noah0627.github.io/games/hanoi" class="play-button">开始游戏</a>
+                <a href="https://github.com/noah0627/Tower-of-Hanoi" class="play-button" style="background-color: #1e293b;">查看源码</a>
+            </div>
+        </div>
+
+        <!-- 更多游戏区域 -->
+        <div class="more-games">
+            <h2 class="section-title" style="text-align: center; border: none; margin: 0 0 15px 0;">更多游戏开发中</h2>
+            <p>敬请期待更多有趣的小游戏，将陆续上线...</p>
+        </div>
+    </div>
+</body>
+</html>
+    

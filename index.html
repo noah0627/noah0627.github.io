@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Noah的官方网站</title>
-	    <!-- 添加标签页图标 -->
+    <!-- 添加标签页图标 -->
     <link rel="icon" href="https://noah0627.github.io/static/img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="https://noah0627.github.io/static/img/favicon.png" type="image/png" sizes="32x32">
 	
@@ -111,42 +111,82 @@
             text-decoration: underline;
         }
 
+        /* 游戏版块样式 */
+        .game-section {
+            margin-top: 20px;
+        }
+        
+        .game-container {
+            background-color: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .game-container:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .open-game-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #2563eb;
+            color: #ffffff !important;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 10px;
+        }
+        
+        .open-game-button:hover {
+            background-color: #1d4ed8;
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            text-decoration: none !important;
+        }
+
         /* 外部链接区域：图片形式调整 */
         .external-links {
             margin-top: 40px;
         }
         .link-list {
-            /* 弹性布局：让图片链接横向排列，自适应换行 */
             display: flex;
             flex-wrap: wrap;
-            gap: 25px; /* 链接之间的间距 */
-            justify-content: center; /* 水平居中 */
+            gap: 25px;
+            justify-content: center;
             margin-top: 15px;
         }
         .link-item {
-            /* 每个链接容器：垂直居中文字和图片 */
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 80px; /* 固定宽度，避免排列混乱 */
+            width: 80px;
         }
-        /* 图标图片样式：统一大小+毛玻璃圆角 */
         .link-icon {
             width: 50px;
             height: 50px;
-            object-fit: contain; /* 保持图片比例，不拉伸 */
+            object-fit: contain;
             border-radius: 8px;
             background-color: rgba(255, 255, 255, 0.8);
             padding: 5px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
         }
-        /* 图标hover交互：放大+加深阴影 */
         .link-item:hover .link-icon {
             transform: scale(1.1);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-        /* 链接文字：统一颜色+居中 */
         .link-text {
             margin-top: 8px;
             color: #2d3748;
@@ -219,13 +259,15 @@
                     <a href="https://noah0627.github.io/programs/简洁学习助手.py">比赛项目(学习助手,自制)</a>
                 </div>
             </li>
-			
-			<li class="project-item">
-                <div class="download-links">
-                    <a href="https://noah0627.github.io/hanoi">自己本地部署的汉诺塔</a>
-                </div>
-            </li>
         </ul>
+
+        <!-- 游戏版块：直接打开游戏页面 -->
+        <h2 class="section-title game-section">游戏</h2>
+        <div class="game-container">
+            <p>点击下方按钮直接打开游戏页面</p>
+            <a href="https://noah0627.github.io/games" class="open-game-button" target="_blank">打开游戏页面</a>
+            <p style="margin-top: 10px; font-size: 14px; color: #4a5568;">(将在新窗口打开)</p>
+        </div>
 
         <!-- 外部链接区：图片形式 -->
         <div class="external-links">
@@ -264,3 +306,4 @@
     </div>
 </body>
 </html>
+    
