@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noah的官方网站</title>
+    <title>Noah的个人站</title>
     <!-- 添加标签页图标 -->
     <link rel="icon" href="https://noah0627.github.io/static/img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="https://noah0627.github.io/static/img/favicon.png" type="image/png" sizes="32x32">
@@ -51,12 +51,12 @@
             font-size: 15px;
         }
 
-        /*  section标题：强调分区 - 优化颜色提高对比度 */
+        /*  section标题：强调分区 */
         .section-title {
-            color: #1e40af; /* 深蓝色，提高对比度 */
+            color: #1e40af; /* 优化后的深蓝色，提高可见性 */
             margin: 30px 0 15px 0;
             padding-left: 10px;
-            border-left: 4px solid #1e40af; /* 同步深色边框 */
+            border-left: 4px solid #1e40af; /* 同步加深边框颜色 */
             font-weight: 700; /* 加粗字体 */
         }
 
@@ -197,6 +197,93 @@
         .external-links a {
             text-decoration: none;
         }
+
+        /* 千万别点的红色按钮（移至页面底部） */
+        .warning-button-container {
+            text-align: center;
+            margin: 60px 0 30px 0; /* 顶部增加间距，与外部链接区隔开；底部留空，避免贴边 */
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .warning-button {
+            padding: 15px 40px;
+            background-color: #dc2626; /* 鲜红色 */
+            color: white !important;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 0 #b91c1c; /* 深色阴影增强立体感 */
+        }
+        
+        .warning-button:hover {
+            animation: shake 0.5s; /* 悬停时抖动效果 */
+            background-color: #b91c1c;
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #991b1b;
+        }
+        
+        .warning-text {
+            color: #dc2626;
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+
+        /* 弹窗样式 */
+        .modal {
+            display: none; /* 默认隐藏 */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .modal h2 {
+            color: #dc2626;
+            margin-bottom: 20px;
+        }
+        
+        .close-modal {
+            padding: 8px 20px;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
@@ -204,7 +291,7 @@
         <h1 class="site-title">Noah的个人站</h1>
         <p class="notice">目前展示个人已完成的项目，更多项目敬请期待！</p>
 
-        <!-- 项目下载区 - 优化了标题颜色 -->
+        <!-- 项目下载区 -->
         <h2 class="section-title">项目下载</h2>
         <ul class="project-list">
             <li class="project-item">
@@ -304,7 +391,40 @@
                 </li>
             </ul>
         </div>
+
+        <!-- 千万别点的红色按钮（移至页面最底部） -->
+        <div class="warning-button-container">
+            <p class="warning-text">警告：以下按钮千万不要点击！</p>
+            <button class="warning-button" onclick="showModal()">千万别点我</button>
+        </div>
     </div>
+
+    <!-- 弹窗 -->
+    <div id="warningModal" class="modal">
+        <div class="modal-content">
+            <h2>哎呀，你还是点了！</h2>
+            <p>都说了千万别点啦~ 不过既然点了，那就再逛逛我的项目或游戏吧！</p>
+            <button class="close-modal" onclick="closeModal()">好吧</button>
+        </div>
+    </div>
+
+    <script>
+        // 弹窗控制
+        function showModal() {
+            document.getElementById('warningModal').style.display = 'flex';
+        }
+        
+        function closeModal() {
+            document.getElementById('warningModal').style.display = 'none';
+        }
+        
+        // 点击弹窗外部关闭
+        window.onclick = function(event) {
+            const modal = document.getElementById('warningModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
 </body>
 </html>
-    
