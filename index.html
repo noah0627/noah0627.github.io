@@ -198,10 +198,10 @@
             text-decoration: none;
         }
 
-        /* 千万别点的红色按钮（移至页面底部） */
+        /* 千万别点的红色按钮（页面最底部） */
         .warning-button-container {
             text-align: center;
-            margin: 60px 0 30px 0; /* 顶部增加间距，与外部链接区隔开；底部留空，避免贴边 */
+            margin: 60px 0 30px 0; /* 顶部间距分隔外部链接区，底部留空避免贴边 */
             padding: 20px;
             background-color: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(8px);
@@ -212,7 +212,7 @@
         
         .warning-button {
             padding: 15px 40px;
-            background-color: #dc2626; /* 鲜红色 */
+            background-color: #dc2626; /* 鲜红色，醒目警示 */
             color: white !important;
             border: none;
             border-radius: 6px;
@@ -222,11 +222,11 @@
             transition: all 0.2s ease;
             text-decoration: none;
             display: inline-block;
-            box-shadow: 0 4px 0 #b91c1c; /* 深色阴影增强立体感 */
+            box-shadow: 0 4px 0 #b91c1c; /* 深色阴影增强按压感 */
         }
         
         .warning-button:hover {
-            animation: shake 0.5s; /* 悬停时抖动效果 */
+            animation: shake 0.5s; /* 悬停抖动，强化“别点”的警示感 */
             background-color: #b91c1c;
             transform: translateY(2px);
             box-shadow: 0 2px 0 #991b1b;
@@ -239,50 +239,11 @@
             font-size: 16px;
         }
         
+        /* 抖动动画关键帧 */
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
             10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
             20%, 40%, 60%, 80% { transform: translateX(5px); }
-        }
-
-        /* 弹窗样式 */
-        .modal {
-            display: none; /* 默认隐藏 */
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .modal-content {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            max-width: 500px;
-            width: 90%;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .modal h2 {
-            color: #dc2626;
-            margin-bottom: 20px;
-        }
-        
-        .close-modal {
-            padding: 8px 20px;
-            background-color: #2563eb;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-top: 20px;
-            font-size: 16px;
         }
     </style>
 </head>
@@ -392,39 +353,14 @@
             </ul>
         </div>
 
-        <!-- 千万别点的红色按钮（移至页面最底部） -->
+        <!-- 千万别点的红色按钮（点击跳转指定页面） -->
         <div class="warning-button-container">
             <p class="warning-text">警告：以下按钮千万不要点击！</p>
-            <button class="warning-button" onclick="showModal()">千万别点我</button>
+            <!-- 替换为a标签，点击直接跳转指定页面，保留按钮样式 -->
+            <a href="https://noah0627.github.io/socialism/" class="warning-button" target="_blank">千万别点我</a>
         </div>
     </div>
 
-    <!-- 弹窗 -->
-    <div id="warningModal" class="modal">
-        <div class="modal-content">
-            <h2>哎呀，你还是点了！</h2>
-            <p>都说了千万别点啦~ 不过既然点了，那就再逛逛我的项目或游戏吧！</p>
-            <button class="close-modal" onclick="closeModal()">好吧</button>
-        </div>
-    </div>
-
-    <script>
-        // 弹窗控制
-        function showModal() {
-            document.getElementById('warningModal').style.display = 'flex';
-        }
-        
-        function closeModal() {
-            document.getElementById('warningModal').style.display = 'none';
-        }
-        
-        // 点击弹窗外部关闭
-        window.onclick = function(event) {
-            const modal = document.getElementById('warningModal');
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
-    </script>
+    <!-- 移除原弹窗相关代码（无需弹窗，直接跳转） -->
 </body>
 </html>
