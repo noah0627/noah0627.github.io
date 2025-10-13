@@ -57,6 +57,51 @@
         .slogan {
             font-size: 1.2rem;
             opacity: 0.9;
+            margin-bottom: 15px; /* 增加间距，为音频控件预留位置 */
+        }
+
+        /* 新增：音频控制样式 */
+        .audio-container {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .audio-label {
+            font-size: 1rem;
+            opacity: 0.95;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .audio-label i {
+            font-size: 1.1rem;
+        }
+        /* 自定义音频控件外观，适配页面风格 */
+        audio {
+            width: 280px;
+            height: 40px;
+            outline: none;
+            border-radius: 20px;
+        }
+        /* 兼容Chrome/Safari浏览器 */
+        audio::-webkit-media-controls-panel {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            border: none;
+        }
+        audio::-webkit-media-controls-play-button {
+            background-color: #c91f37;
+            border-radius: 50%;
+        }
+        audio::-webkit-media-controls-play-button:hover {
+            background-color: #8f0023;
+        }
+        audio::-webkit-media-controls-volume-slider {
+            background-color: rgba(201, 31, 55, 0.2);
+            border-radius: 10px;
         }
         
         /* 主内容区 */
@@ -328,6 +373,14 @@
             .gallery {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            /* 响应式音频控件 */
+            audio {
+                width: 220px;
+            }
+            .audio-container {
+                gap: 8px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -346,6 +399,17 @@
             h2 {
                 font-size: 1.5rem !important;
             }
+
+            /* 小屏幕音频控件优化 */
+            .audio-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            audio {
+                width: 100%;
+                max-width: 280px;
+            }
         }
     </style>
 </head>
@@ -358,6 +422,20 @@
             </div>
             <h1>弘扬社会主义核心价值观</h1>
             <p class="slogan">富强、民主、文明、和谐，自由、平等、公正、法治，爱国、敬业、诚信、友善</p>
+            
+            <!-- 新增：音频播放区域 -->
+            <div class="audio-container">
+                <div class="audio-label">
+                    <i class="fas fa-music"></i>
+                    <span>背景音乐</span>
+                </div>
+                <!-- 音频标签：加载指定音频，支持自动播放、循环、控件 -->
+                <audio src="https://noah0627.github.io/static/music/jiangjun.m4a" controls autoplay loop>
+                    您的浏览器不支持音频播放，请升级浏览器后重试。
+                    <!-- 降级方案：提供音频下载链接 -->
+                    <a href="https://noah0627.github.io/static/music/jiangjun.m4a">下载音频文件</a>
+                </audio>
+            </div>
         </div>
     </header>
     
@@ -582,4 +660,3 @@
     </script>
 </body>
 </html>
-    
