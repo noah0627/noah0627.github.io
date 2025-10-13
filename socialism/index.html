@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>弘扬社会主义核心价值观</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Microsoft YaHei", "SimHei", sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* 头部样式 */
+        header {
+            background: linear-gradient(135deg, #c91f37 0%, #8f0023 100%);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .national-emblem {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            color: #c91f37;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .slogan {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        /* 主内容区 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        /* 简介部分 */
+        .intro {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .intro h2 {
+            color: #c91f37;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .intro p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            line-height: 1.8;
+        }
+        
+        /* 核心价值观部分 */
+        .values-section {
+            margin-bottom: 50px;
+        }
+        
+        .values-section h2 {
+            text-align: center;
+            color: #c91f37;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #c91f37;
+            display: inline-block;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 25px;
+        }
+        
+        .value-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px 15px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border-top: 4px solid #c91f37;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        
+        .value-icon {
+            font-size: 32px;
+            color: #c91f37;
+            margin-bottom: 15px;
+        }
+        
+        .value-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #c91f37;
+            margin-bottom: 10px;
+        }
+        
+        .value-desc {
+            font-size: 0.95rem;
+            color: #666;
+        }
+        
+        /* 实践部分 */
+        .practice-section {
+            background-color: white;
+            padding: 35px;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+        
+        .practice-section h2 {
+            color: #c91f37;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+        
+        .practice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .practice-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .practice-icon {
+            width: 70px;
+            height: 70px;
+            background-color: #fde8ea;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .practice-icon i {
+            font-size: 28px;
+            color: #c91f37;
+        }
+        
+        .practice-title {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        /* 名言部分 */
+        .quotes-section {
+            background: linear-gradient(rgba(201, 31, 55, 0.9), rgba(201, 31, 55, 0.95)), url('https://picsum.photos/id/1059/1200/400');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 50px 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .quotes-section h2 {
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+        
+        .quote {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            font-size: 1.2rem;
+            font-style: italic;
+            position: relative;
+            padding: 0 20px;
+        }
+        
+        .quote:before, .quote:after {
+            content: """;
+            font-size: 3rem;
+            color: rgba(255,255,255,0.5);
+            position: absolute;
+        }
+        
+        .quote:before {
+            top: -20px;
+            left: -10px;
+        }
+        
+        .quote:after {
+            bottom: -40px;
+            right: -10px;
+        }
+        
+        .quote-author {
+            font-size: 1rem;
+            margin-top: 10px;
+            font-style: normal;
+        }
+        
+        /* 图片展示区 */
+        .gallery-section h2 {
+            text-align: center;
+            color: #c91f37;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .gallery img:hover {
+            transform: scale(1.03);
+        }
+        
+        /* 底部部分 */
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-links {
+            margin: 20px 0;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .practice-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .intro, .practice-section {
+                padding: 20px 15px;
+            }
+            
+            h2 {
+                font-size: 1.5rem !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <header>
+        <div class="header-content">
+            <div class="national-emblem">
+                <i class="fas fa-star"></i>
+            </div>
+            <h1>弘扬社会主义核心价值观</h1>
+            <p class="slogan">富强、民主、文明、和谐，自由、平等、公正、法治，爱国、敬业、诚信、友善</p>
+        </div>
+    </header>
+    
+    <!-- 主内容区 -->
+    <div class="container">
+        <!-- 简介部分 -->
+        <section class="intro">
+            <h2>什么是社会主义核心价值观？</h2>
+            <p>社会主义核心价值观是当代中国精神的集中体现，凝结着全体人民共同的价值追求。它分为国家、社会、公民三个层面，为国家发展进步、社会和谐稳定、公民道德修养提供了根本遵循。</p>
+            <p>培育和践行社会主义核心价值观，是推进中国特色社会主义伟大事业、实现中华民族伟大复兴中国梦的战略任务。</p>
+        </section>
+        
+        <!-- 核心价值观部分 -->
+        <section class="values-section">
+            <h2>社会主义核心价值观内容</h2>
+            <div class="values-grid">
+                <!-- 国家层面 -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-globe-asia"></i>
+                    </div>
+                    <div class="value-title">富强</div>
+                    <div class="value-desc">国家富强是民族复兴的物质基础，是人民幸福的根本保障</div>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-people-arrows"></i>
+                    </div>
+                    <div class="value-title">民主</div>
+                    <div class="value-desc">人民当家作主，是社会主义的生命，是创造人民美好幸福生活的政治保障</div>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-book-reader"></i>
+                    </div>
+                    <div class="value-title">文明</div>
+                    <div class="value-desc">社会进步的重要标志，是实现中华民族伟大复兴的精神支撑</div>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="value-title">和谐</div>
+                    <div class="value-desc">社会和谐是中国特色社会主义的本质属性，是国家富强、民族振兴、人民幸福的重要保证</div>
+                </div>
+                
+                <!-- 社会层面 -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <div class="value-title">自由</div>
+                    <div class="value-desc">人的本质追求，是社会主义社会的应有之义</div>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="value-title">平等</div>
+                    <div class="value-desc">社会公平正义的重要基础，是人类追求的共同目标</div>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-balance-scale-right"></i>
+                    </div>
+                    <div class="value-title">公正</div>
+                    <div class="value-desc">社会和谐稳定的基石，是中国特色社会主义的内在要求</div>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-gavel"></i>
+                    </div>
+                    <div class="value-title">法治</div>
+                    <div class="value-desc">国家治理体系和治理能力的重要依托，是治国理政的基本方式</div>
+                </div>
+                
+                <!-- 公民层面 -->
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="value-title">爱国</div>
+                    <div class="value-desc">中华民族的传统美德，是每个公民应有的情感和责任</div>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="value-title">敬业</div>
+                    <div class="value-desc">职业道德的基本要求，是实现个人价值和社会价值的重要途径</div>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="value-title">诚信</div>
+                    <div class="value-desc">立身之本、兴业之基，是社会良性运行的道德基础</div>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <div class="value-title">友善</div>
+                    <div class="value-desc">人际交往的基本准则，是构建和谐社会的重要基础</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 实践部分 -->
+        <section class="practice-section">
+            <h2>如何践行社会主义核心价值观</h2>
+            <div class="practice-grid">
+                <div class="practice-item">
+                    <div class="practice-icon">
+                        <i class="fas fa-flag"></i>
+                    </div>
+                    <h3 class="practice-title">坚定理想信念</h3>
+                    <p>学习党的理论，增强"四个自信"，树立正确的世界观、人生观、价值观</p>
+                </div>
+                
+                <div class="practice-item">
+                    <div class="practice-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="practice-title">加强理论学习</h3>
+                    <p>深入学习社会主义核心价值观的深刻内涵，理解其精神实质和实践要求</p>
+                </div>
+                
+                <div class="practice-item">
+                    <div class="practice-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3 class="practice-title">从自身做起</h3>
+                    <p>在日常工作和生活中践行价值观，做到言行一致、知行合一</p>
+                </div>
+                
+                <div class="practice-item">
+                    <div class="practice-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3 class="practice-title">积极宣传引导</h3>
+                    <p>向身边人宣传社会主义核心价值观，形成良好社会风尚</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 名言部分 -->
+        <section class="quotes-section">
+            <h2>经典论述</h2>
+            <div class="quote">
+                培育和弘扬核心价值观，有效整合社会意识，是社会系统得以正常运转、社会秩序得以有效维护的重要途径，也是国家治理体系和治理能力的重要方面。
+                <div class="quote-author">—— 习近平</div>
+            </div>
+            <div class="quote">
+                核心价值观，其实就是一种德，既是个人的德，也是一种大德，就是国家的德、社会的德。国无德不兴，人无德不立。
+                <div class="quote-author">—— 习近平</div>
+            </div>
+        </section>
+        
+        <!-- 图片展示区 -->
+        <section class="gallery-section">
+            <h2>新时代风貌</h2>
+            <div class="gallery">
+                <img src="https://picsum.photos/id/1031/600/400" alt="现代化城市建设，体现国家富强">
+                <img src="https://picsum.photos/id/1048/600/400" alt="人民幸福生活，体现和谐社会">
+                <img src="https://picsum.photos/id/1059/600/400" alt="绿水青山，体现生态文明建设">
+                <img src="https://picsum.photos/id/1071/600/400" alt="科技创新，体现国家发展">
+                <img src="https://picsum.photos/id/1069/600/400" alt="文化传承，体现文明发展">
+                <img src="https://picsum.photos/id/1058/600/400" alt="志愿服务，体现友善互助">
+            </div>
+        </section>
+    </div>
+    
+    <!-- 底部 -->
+    <footer>
+        <div class="footer-content">
+            <h3>弘扬社会主义核心价值观</h3>
+            <div class="footer-links">
+                <a href="#">关于我们</a>
+                <a href="#">相关政策</a>
+                <a href="#">学习资料</a>
+                <a href="#">联系我们</a>
+            </div>
+            <div class="copyright">
+                版权所有 © 2023 弘扬社会主义核心价值观宣传网 | 践行社会主义核心价值观，从我做起
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 页面加载动画
+        document.addEventListener('DOMContentLoaded', function() {
+            // 为价值观卡片添加渐入效果
+            const valueCards = document.querySelectorAll('.value-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            valueCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
+    
