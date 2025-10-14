@@ -139,8 +139,8 @@
             left: 0;
         }
 
-        /* 游戏按钮样式 */
-        .play-button {
+        /* 按钮样式：统一保留原有视觉风格，区分功能文字 */
+        .play-button, .download-button, .download-button-mac, .download-button-windows {
             display: inline-block;
             padding: 12px 30px;
             background-color: #2563eb;
@@ -154,11 +154,97 @@
             transition: all 0.2s ease;
             margin-right: 15px;
         }
-        .play-button:hover {
+        .play-button:hover, .download-button:hover, .download-button-mac:hover, .download-button-windows:hover {
             background-color: #1d4ed8;
             transform: scale(1.05);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
             text-decoration: none !important;
+        }
+        /* 查看源码按钮样式保留 */
+        .source-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #1e293b;
+            color: #ffffff !important;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-right: 15px;
+        }
+        .source-button:hover {
+            background-color: #0f172a;
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            text-decoration: none !important;
+        }
+        /* 密钥验证按钮样式 */
+        .verify-button {
+            display: inline-block;
+            padding: 12px 20px;
+            background-color: #10b981; /* 绿色，代表验证功能 */
+            color: #ffffff !important;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-left: 10px;
+        }
+        .verify-button:hover {
+            background-color: #059669;
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            text-decoration: none !important;
+        }
+
+        /* 密钥输入框样式 */
+        .key-input {
+            padding: 12px 15px;
+            width: 300px;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 16px;
+            color: #2d3748;
+            transition: border-color 0.2s ease;
+        }
+        .key-input:focus {
+            outline: none;
+            border-color: #2563eb; /* 聚焦时蓝色边框，提示交互状态 */
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        /* 格式提示文本 */
+        .format-hint {
+            display: block;
+            margin-top: 8px;
+            font-size: 14px;
+            color: #64748b;
+        }
+        /* 验证结果提示（错误/成功） */
+        .verify-hint {
+            display: block;
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .hint-error {
+            color: #ef4444; /* 红色，错误提示 */
+        }
+        .hint-success {
+            color: #10b981; /* 绿色，成功提示 */
+        }
+        /* 平台下载说明文本 */
+        .platform-hint {
+            display: block;
+            margin: 10px 0 5px 0;
+            font-size: 15px;
+            color: #1e293b;
+            font-weight: 600;
         }
 
         .more-games {
@@ -183,11 +269,24 @@
             .game-preview, .game-info {
                 min-width: 100%;
             }
-            .play-button {
+            .play-button, .download-button, .source-button, .download-button-mac, .download-button-windows {
                 display: block;
                 text-align: center;
                 margin-bottom: 10px;
                 margin-right: 0;
+            }
+            /* 移动端密钥输入区换行 */
+            .key-verify-group {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            .key-input {
+                width: 100%;
+            }
+            .verify-button {
+                margin-left: 0;
+                text-align: center;
             }
         }
     </style>
@@ -199,7 +298,7 @@
         
         <h1 class="site-title">Noah的游戏页面</h1>
 
-        <!-- 汉诺塔游戏卡片 -->
+        <!-- 汉诺塔游戏卡片（保留“开始游戏”按钮） -->
         <div class="game-card">
             <div class="game-preview">
                 <!-- 汉诺塔游戏预览图 -->
@@ -217,16 +316,114 @@
                     <li>完全响应式，适配各种设备</li>
                 </ul>
                 <a href="https://noah0627.github.io/games/hanoi" class="play-button">开始游戏</a>
-                <a href="https://github.com/noah0627/hanoi" class="play-button" style="background-color: #1e293b;">查看源码</a>
+                <a href="https://github.com/noah0627/hanoi" class="source-button">查看源码</a>
+            </div>
+        </div>
+		
+        <!-- 星际大战游戏卡片（“开始游戏”改为“下载”） -->
+        <div class="game-card">
+            <div class="game-preview">
+                <!-- 星际大战游戏预览图 -->
+                <img src="" alt="游戏预览暂不可用" />
+            </div>
+            <div class="game-info">
+                <h2 class="game-name">星际大战</h2>
+                <p class="game-description">
+                    星际大战是根据XDFPython课程改编而来的2.0版本，玩家将操控飞船抵御外星入侵，通过击败敌人获取分数，支持多等级难度切换，带有沉浸式音效和背景音乐。
+                </p>
+                <ul class="game-features">
+                    <li>支持不同等级级别</li>
+                    <li>记录分数和生命值</li>
+                    <li>含有音效和bgm</li>
+                    <li>完全响应式，适配各种设备</li>
+                </ul>
+                <!-- 下载按钮，链接预留为星际大战下载路径 -->
+                <a href="https://noah0627.github.io/programs/star-battle-v2.0.0-Final-x64.zip" class="download-button">下载游戏</a>
+                <a href="https://github.com/noah0627/star-battle-2" class="source-button">查看源码</a>
+            </div>
+        </div>
+
+        <!-- 爆破任务游戏卡片（密钥验证+双平台下载） -->
+        <div class="game-card">
+            <div class="game-preview">
+                <!-- 爆破任务游戏预览图 -->
+                <img src="" alt="游戏预览暂不可用" />
+            </div>
+            <div class="game-info">
+                <h2 class="game-name">爆破任务(试用版)</h2>
+                <p class="game-description">
+                    爆破任务是一个简单的弹弓游戏，玩家需要将爆破弹珠射到尽可能靠近爆破点的位置，以尽可能成功爆破。试用版需输入特定密钥方可下载，支持Mac和Windows双平台。
+                </p>
+                <ul class="game-features">
+                    <li>支持不同难度级别(试用版不可用)</li>
+                    <li>记录移动步数和用时(试用版不可用)</li>
+                    <li>简洁直观的界面设计</li>
+                    <li>使用Unity引擎开发，双平台适配</li>
+                </ul>
+                <!-- 密钥验证区域 -->
+                <div class="key-verify-group">
+                    <input type="text" id="blastMissionKey" class="key-input" placeholder="请输入下载密钥" maxlength="17">
+                    <button class="verify-button" onclick="verifyBlastMissionKey()">验证密钥</button>
+                    <span class="format-hint">密钥格式：XXXXX-XXXXX-XXXXX（仅支持英文字母）</span>
+                    <span id="verifyResult" class="verify-hint"></span>
+                    
+                    <!-- 双平台下载按钮（默认隐藏，验证通过后显示） -->
+                    <span id="platformDownloadHint" class="platform-hint" style="display: none;">选择对应平台下载：</span>
+                    <a href="https://noah0627.github.io/programs/dhy/Game/Mac.zip" class="download-button-mac" id="blastMissionDownloadMac" style="display: none; margin-top: 5px;">Mac版下载</a>
+                    <a href="https://noah0627.github.io/programs/dhy/Game/Windows.zip" class="download-button-windows" id="blastMissionDownloadWindows" style="display: none; margin-top: 5px;">Windows版下载</a>
+                </div>
             </div>
         </div>
 
         <!-- 更多游戏区域 -->
         <div class="more-games">
-            <h2 class="section-title" style="text-align: center; border: none; margin: 0 0 15px 0;">更多游戏开发中</h2>
-            <p>敬请期待更多有趣的小游戏，将陆续上线...</p>
+            <p>更多游戏正在开发中，敬请期待...</p>
         </div>
     </div>
+
+    <script>
+        // 定义正确的爆破任务下载密钥（可根据需求修改）
+        const CORRECT_BLAST_KEY = "ABCDE-FGHIJ-KLMNO"; // 示例密钥，格式：5位-5位-5位英文字母
+
+        // 密钥验证函数
+        function verifyBlastMissionKey() {
+            // 获取输入的密钥、结果提示元素、下载按钮
+            const inputKey = document.getElementById("blastMissionKey").value.trim();
+            const verifyResult = document.getElementById("verifyResult");
+            const platformHint = document.getElementById("platformDownloadHint");
+            const downloadMac = document.getElementById("blastMissionDownloadMac");
+            const downloadWindows = document.getElementById("blastMissionDownloadWindows");
+
+            // 1. 验证格式：XXXXX-XXXXX-XXXXX（仅英文字母）
+            const keyPattern = /^[A-Za-z]{5}-[A-Za-z]{5}-[A-Za-z]{5}$/;
+            
+            if (!keyPattern.test(inputKey)) {
+                verifyResult.textContent = "密钥格式错误，请检查格式（XXXXX-XXXXX-XXXXX，仅支持英文字母）";
+                verifyResult.className = "verify-hint hint-error";
+                // 隐藏下载按钮
+                platformHint.style.display = "none";
+                downloadMac.style.display = "none";
+                downloadWindows.style.display = "none";
+                return;
+            }
+
+            // 2. 验证密钥是否正确（不区分大小写）
+            if (inputKey.toUpperCase() === CORRECT_BLAST_KEY) {
+                verifyResult.textContent = "密钥验证成功，可选择平台下载";
+                verifyResult.className = "verify-hint hint-success";
+                // 显示下载按钮
+                platformHint.style.display = "block";
+                downloadMac.style.display = "inline-block";
+                downloadWindows.style.display = "inline-block";
+            } else {
+                verifyResult.textContent = "密钥不正确，请重新输入";
+                verifyResult.className = "verify-hint hint-error";
+                // 隐藏下载按钮
+                platformHint.style.display = "none";
+                downloadMac.style.display = "none";
+                downloadWindows.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
-    
