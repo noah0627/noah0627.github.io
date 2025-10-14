@@ -324,7 +324,7 @@
         <div class="game-card">
             <div class="game-preview">
                 <!-- 星际大战游戏预览图 -->
-                <img src="" alt="游戏预览暂不可用" />
+                <img src="https://noah0627.github.io/static/img/gamecovers/starbattle.png" alt="星际大战游戏预览" />
             </div>
             <div class="game-info">
                 <h2 class="game-name">星际大战</h2>
@@ -347,7 +347,7 @@
         <div class="game-card">
             <div class="game-preview">
                 <!-- 爆破任务游戏预览图 -->
-                <img src="" alt="游戏预览暂不可用" />
+                <img src="" alt="游戏预览不可用" />
             </div>
             <div class="game-info">
                 <h2 class="game-name">爆破任务(试用版)</h2>
@@ -382,8 +382,31 @@
     </div>
 
     <script>
-        // 定义正确的爆破任务下载密钥（可根据需求修改）
-        const CORRECT_BLAST_KEY = "XDFOJ-AKSDH-JYNRZ"; // 示例密钥，格式：5位-5位-5位英文字母
+        // 基础加密函数 - 将字符串转换为字符编码数组
+        function encode(str) {
+            let result = [];
+            for (let i = 0; i < str.length; i++) {
+                // 对每个字符的ASCII码进行简单偏移处理
+                result.push(str.charCodeAt(i) + 5);
+            }
+            return result;
+        }
+
+        // 解密函数 - 将编码数组转换回原始字符串
+        function decode(encodedArr) {
+            let result = '';
+            for (let i = 0; i < encodedArr.length; i++) {
+                // 还原偏移的ASCII码
+                result += String.fromCharCode(encodedArr[i] - 5);
+            }
+            return result;
+        }
+
+        // 加密存储的密钥（原始密钥: XDFOJ-AKSDH-JYNRZ）
+        const ENCODED_KEY = [88+5,68+5,70+5,79+5,74+5,45+5,65+5,75+5,83+5,68+5,72+5,45+5,74+5,89+5,78+5,82+5,90+5];
+        
+        // 获取解密后的正确密钥
+        const CORRECT_BLAST_KEY = decode(ENCODED_KEY);
 
         // 密钥验证函数
         function verifyBlastMissionKey() {
@@ -427,3 +450,4 @@
     </script>
 </body>
 </html>
+    
