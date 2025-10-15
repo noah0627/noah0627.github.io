@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>你被骗了！</title>
-    <!-- 标签页图标（与主站保持一致） -->
+    <!-- 标签页图标 -->
     <link rel="icon" href="https://noah0627.github.io/static/img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="https://noah0627.github.io/static/img/favicon.png" type="image/png" sizes="32x32">
     
@@ -20,7 +20,6 @@
         body {
             font-family: 'Microsoft YaHei', Arial, sans-serif;
             min-height: 100vh;
-            /* 动态渐变背景 */
             background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9f43);
             background-size: 400% 400%;
             animation: gradientMove 15s ease infinite;
@@ -40,7 +39,7 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* 内容容器（毛玻璃效果） */
+        /* 内容容器 */
         .content-box {
             max-width: 800px;
             width: 100%;
@@ -59,7 +58,6 @@
             color: #e74c3c;
             margin-bottom: 20px;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            /* 标题抖动动画 */
             animation: titleShake 0.8s ease;
         }
 
@@ -127,7 +125,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
 
-        /* 响应式适配（手机端） */
+        /* 响应式适配 */
         @media (max-width: 768px) {
             .trick-title {
                 font-size: 32px;
@@ -151,16 +149,17 @@
             既然来了，不妨看看下面的视频，看完点按钮就能回主站啦！
         </p>
 
-        <!-- 视频播放区域 -->
+        <!-- 视频播放区域（添加自动播放属性） -->
         <div class="video-wrap">
-            <!-- 替换src为视频地址，poster为视频封面图地址 -->
             <video 
                 src="https://noah0627.github.io/static/videos/trick-video.mp4" 
                 poster="https://noah0627.github.io/static/img/video-cover.png" 
                 controls 
-                preload="metadata"
+                autoplay 
+                muted 
+                loop
+                preload="auto"
             >
-                <!-- 浏览器不支持视频时显示 -->
                 <div class="video-tip">
                     您的浏览器不支持视频播放，<a href="https://noah0627.github.io/static/videos/trick-video.mp4">点击这里下载视频</a>
                 </div>
@@ -170,5 +169,34 @@
         <!-- 返回主站按钮 -->
         <a href="https://noah0627.github.io" class="back-btn">返回Noah个人站</a>
     </div>
+
+    <script>
+        // 增强自动播放兼容性的脚本
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.querySelector('video');
+            
+            // 尝试在用户交互后开启声音（针对需要用户交互的浏览器）
+            function enableAudio() {
+                if (video.muted) {
+                    video.muted = false;
+                    document.removeEventListener('click', enableAudio);
+                    document.removeEventListener('touchstart', enableAudio);
+                }
+            }
+            
+            // 监听用户交互事件，用于解锁音频
+            document.addEventListener('click', enableAudio);
+            document.addEventListener('touchstart', enableAudio);
+            
+            // 处理自动播放失败的情况
+            video.addEventListener('error', function() {
+                console.log('视频自动播放失败，尝试手动播放');
+                video.play().catch(err => {
+                    console.log('手动播放也失败了:', err);
+                    // 可以在这里显示提示，引导用户点击播放
+                });
+            });
+        });
+    </script>
 </body>
 </html>
