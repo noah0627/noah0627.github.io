@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>你被骗了！</title>
+    <!-- 标签页图标（与主站保持一致） -->
+    <link rel="icon" href="https://noah0627.github.io/static/img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="https://noah0627.github.io/static/img/favicon.png" type="image/png" sizes="32x32">
+    
+    <style>
+        /* 全局重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 页面基础样式 */
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            min-height: 100vh;
+            /* 动态渐变背景 */
+            background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9f43);
+            background-size: 400% 400%;
+            animation: gradientMove 15s ease infinite;
+            color: #2d3436;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* 背景渐变动画 */
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* 内容容器（毛玻璃效果） */
+        .content-box {
+            max-width: 800px;
+            width: 100%;
+            padding: 30px 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 标题样式 */
+        .trick-title {
+            font-size: 42px;
+            font-weight: 900;
+            color: #e74c3c;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            /* 标题抖动动画 */
+            animation: titleShake 0.8s ease;
+        }
+
+        /* 标题抖动动画 */
+        @keyframes titleShake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-6px); }
+            20%, 40%, 60%, 80% { transform: translateX(6px); }
+        }
+
+        /* 说明文字 */
+        .trick-text {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: #555;
+        }
+        .trick-text strong {
+            color: #e74c3c;
+            font-size: 19px;
+        }
+
+        /* 视频容器 */
+        .video-wrap {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background-color: #000;
+        }
+        .video-wrap video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* 视频加载失败提示 */
+        .video-tip {
+            padding: 50px 20px;
+            color: #fff;
+            font-size: 16px;
+        }
+        .video-tip a {
+            color: #3498db;
+            text-decoration: underline;
+        }
+
+        /* 返回主站按钮 */
+        .back-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #3498db;
+            color: #fff !important;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        .back-btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        /* 响应式适配（手机端） */
+        @media (max-width: 768px) {
+            .trick-title {
+                font-size: 32px;
+            }
+            .trick-text {
+                font-size: 16px;
+            }
+            .video-wrap {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content-box">
+        <!-- 文字提示区域 -->
+        <h1 class="trick-title">你被骗了！</h1>
+        <p class="trick-text">
+            哈哈，没想到吧～点击“千万别点”按钮居然会跳过来！<br>
+            其实这只是个小玩笑，主要想测试下你的好奇心～<br>
+            既然来了，不妨看看下面的视频，看完点按钮就能回主站啦！
+        </p>
+
+        <!-- 视频播放区域 -->
+        <div class="video-wrap">
+            <!-- 替换src为视频地址，poster为视频封面图地址 -->
+            <video 
+                src="https://noah0627.github.io/static/videos/trick-video.mp4" 
+                poster="https://noah0627.github.io/static/img/video-cover.png" 
+                controls 
+                preload="metadata"
+            >
+                <!-- 浏览器不支持视频时显示 -->
+                <div class="video-tip">
+                    您的浏览器不支持视频播放，<a href="https://noah0627.github.io/static/videos/trick-video.mp4">点击这里下载视频</a>
+                </div>
+            </video>
+        </div>
+
+        <!-- 返回主站按钮 -->
+        <a href="https://noah0627.github.io" class="back-btn">返回Noah个人站</a>
+    </div>
+</body>
+</html>
