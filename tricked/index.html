@@ -88,23 +88,16 @@
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            background-color: #000;
+            position: relative;
+            padding-top: 56.25%; /* 16:9 比例 */
         }
-        .video-wrap video {
+        .video-wrap iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* 视频加载失败提示 */
-        .video-tip {
-            padding: 50px 20px;
-            color: #fff;
-            font-size: 16px;
-        }
-        .video-tip a {
-            color: #3498db;
-            text-decoration: underline;
+            height: 100%;
+            border: none;
         }
 
         /* 返回主站按钮 */
@@ -149,21 +142,17 @@
             既然来了，不妨看看下面的视频，看完点按钮就能回主站啦！
         </p>
 
-        <!-- 视频播放区域（添加自动播放属性） -->
+        <!-- 视频播放区域（嵌入B站视频） -->
         <div class="video-wrap">
-            <video 
-                src="https://noah0627.github.io/static/videos/trick-video.mp4" 
-                poster="https://noah0627.github.io/static/img/video-cover.png" 
-                controls 
-                autoplay 
-                muted 
-                loop
-                preload="auto"
-            >
-                <div class="video-tip">
-                    您的浏览器不支持视频播放，<a href="https://noah0627.github.io/static/videos/trick-video.mp4">点击这里下载视频</a>
-                </div>
-            </video>
+            <iframe 
+                src="//player.bilibili.com/player.html?isOutside=true&aid=114781793031993&bvid=BV1jh3WzzEzp&cid=30804281491&p=1&autoplay=1" 
+                scrolling="no" 
+                border="0" 
+                frameborder="no" 
+                framespacing="0" 
+                allowfullscreen="true"
+                allow="autoplay"
+            ></iframe>
         </div>
 
         <!-- 返回主站按钮 -->
@@ -171,31 +160,34 @@
     </div>
 
     <script>
-        // 增强自动播放兼容性的脚本
+        // 增强B站视频自动播放兼容性
         document.addEventListener('DOMContentLoaded', function() {
-            const video = document.querySelector('video');
-            
-            // 尝试在用户交互后开启声音（针对需要用户交互的浏览器）
-            function enableAudio() {
-                if (video.muted) {
-                    video.muted = false;
-                    document.removeEventListener('click', enableAudio);
-                    document.removeEventListener('touchstart', enableAudio);
+            // 监听用户交互，触发视频播放
+            function triggerPlay() {
+                const iframe = document.querySelector('iframe');
+                if (iframe) {
+                    // 向iframe发送播放指令（B站播放器支持）
+                    try {
+                        iframe.contentWindow.postMessage({
+                            'event': 'command',
+                            'func': 'playVideo',
+                            'args': []
+                        }, '*');
+                    } catch (e) {
+                        console.log('触发播放失败:', e);
+                    }
                 }
+                // 只触发一次
+                document.removeEventListener('click', triggerPlay);
+                document.removeEventListener('touchstart', triggerPlay);
             }
             
-            // 监听用户交互事件，用于解锁音频
-            document.addEventListener('click', enableAudio);
-            document.addEventListener('touchstart', enableAudio);
+            // 监听用户交互事件，用于解锁自动播放
+            document.addEventListener('click', triggerPlay);
+            document.addEventListener('touchstart', triggerPlay);
             
-            // 处理自动播放失败的情况
-            video.addEventListener('error', function() {
-                console.log('视频自动播放失败，尝试手动播放');
-                video.play().catch(err => {
-                    console.log('手动播放也失败了:', err);
-                    // 可以在这里显示提示，引导用户点击播放
-                });
-            });
+            // 初始尝试触发播放
+            setTimeout(triggerPlay, 1000);
         });
     </script>
 </body>
