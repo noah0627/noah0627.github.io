@@ -1,0 +1,19 @@
+/* 留言提交表单相关样式 */
+#noteSubmitForm input:focus,
+#noteSubmitForm textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+#submitResult.success {
+    color: #10b981;
+}
+#submitResult.error {
+    color: #ef4444;
+}
+/* 响应式适配表单 */
+@media (max-width: 768px) {
+    #noteSubmitForm button {
+        width: 100%;
+    }
+}
