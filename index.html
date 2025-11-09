@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Noah的个人站</title>
-    <link rel="stylesheet" href="https://noah0627.github.io/static/css/style.css">
     <link rel="icon" href="https://noah0627.github.io/static/img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="https://noah0627.github.io/static/img/favicon.png" type="image/png" sizes="32x32">
     <style>
-        /* 原有的CSS样式保持不变 */
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Microsoft YaHei', Arial, sans-serif;
             min-height: 100vh;
@@ -17,7 +22,6 @@
             background-color: rgba(255, 255, 255, 0.3);
             padding: 30px 20px;
             line-height: 1.7;
-            margin: 0;
             color: #333;
         }
 
@@ -26,135 +30,186 @@
             margin: 0 auto;
         }
 
+        /* 毛玻璃效果 */
         .glass-effect {
             background-color: rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
-            padding: 20px;
-            margin-bottom: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .glass-effect:hover {
             background-color: rgba(255, 255, 255, 0.8);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
         }
 
+        /* 标题样式 */
         .site-title {
             text-align: center;
             color: #2c3e50;
-            margin-bottom: 10px;
-            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-size: 2.8rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
         .notice {
             text-align: center;
             color: #7f8c8d;
-            margin-bottom: 30px;
-            font-size: 1.1rem;
+            margin-bottom: 40px;
+            font-size: 1.2rem;
+            font-weight: 500;
         }
 
         .section-title {
             color: #3498db;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 8px;
-            margin-top: 30px;
-            margin-bottom: 20px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 12px;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            font-weight: 600;
         }
 
+        /* 项目列表样式 */
         .project-list {
             list-style: none;
             padding: 0;
         }
 
         .project-item {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .project-name {
             font-weight: bold;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             color: #2c3e50;
+            font-size: 1.3rem;
+            border-left: 4px solid #3498db;
+            padding-left: 12px;
+        }
+
+        .download-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .download-links a {
             display: inline-block;
-            background-color: #3498db;
+            background: linear-gradient(135deg, #3498db, #2980b9);
             color: white;
-            padding: 8px 15px;
-            margin-right: 10px;
-            margin-bottom: 8px;
-            border-radius: 4px;
+            padding: 10px 20px;
+            border-radius: 8px;
             text-decoration: none;
-            transition: background-color 0.3s;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
         }
 
         .download-links a:hover {
-            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+            background: linear-gradient(135deg, #2980b9, #3498db);
         }
 
+        /* 游戏版块样式 */
         .game-container {
             text-align: center;
+            padding: 30px !important;
+        }
+
+        .game-container p {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: #2c3e50;
         }
 
         .open-game-button {
             display: inline-block;
-            background-color: #2ecc71;
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
             color: white;
-            padding: 12px 25px;
-            border-radius: 6px;
+            padding: 15px 35px;
+            border-radius: 10px;
             text-decoration: none;
             font-weight: bold;
-            transition: background-color 0.3s;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(46, 204, 113, 0.3);
+            border: none;
+            cursor: pointer;
         }
 
         .open-game-button:hover {
-            background-color: #27ae60;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.4);
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+        }
+
+        /* 外部链接样式 */
+        .external-links {
+            margin-top: 50px;
         }
 
         .link-list {
             list-style: none;
             padding: 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
         }
 
         .link-item a {
             display: flex;
             align-items: center;
-            background-color: white;
-            padding: 10px 15px;
-            border-radius: 6px;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 12px;
             text-decoration: none;
             color: #333;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .link-item a:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            background: rgba(255, 255, 255, 1);
         }
 
         .link-icon {
-            width: 20px;
-            height: 20px;
-            margin-right: 8px;
+            width: 24px;
+            height: 24px;
+            margin-right: 12px;
+            border-radius: 4px;
         }
 
+        .link-text {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* 留言板样式 */
         .note-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(52, 152, 219, 0.2);
         }
 
         .note-title {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             font-weight: bold;
             color: #2c3e50;
         }
@@ -162,85 +217,86 @@
         .note-update {
             font-size: 0.9rem;
             color: #7f8c8d;
+            background: rgba(52, 152, 219, 0.1);
+            padding: 5px 12px;
+            border-radius: 20px;
         }
 
         .note-content {
-            min-height: 100px;
+            min-height: 150px;
         }
 
         .note-error {
             color: #e74c3c;
             text-align: center;
-            padding: 20px;
+            padding: 40px 20px;
+            font-size: 1.1rem;
         }
 
+        /* 表单样式 */
         form {
-            margin-top: 15px;
+            margin-top: 20px;
         }
 
         label {
             display: block;
-            margin-bottom: 8px;
-            color: #1e293b;
-            font-weight: 500;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            font-weight: 600;
+            font-size: 1.1rem;
         }
 
         input, textarea {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
             font-size: 16px;
             box-sizing: border-box;
+            transition: all 0.3s ease;
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
         }
 
         textarea {
             resize: vertical;
+            min-height: 120px;
         }
 
         #wordCount {
             display: block;
-            margin-top: 5px;
+            margin-top: 8px;
             font-size: 14px;
             color: #64748b;
+            text-align: right;
         }
 
         #submitResult {
-            margin-top: 10px;
-            font-size: 14px;
+            margin-top: 15px;
+            font-size: 16px;
             font-weight: 600;
-        }
-
-        .warning-button-container {
+            padding: 12px;
+            border-radius: 8px;
             text-align: center;
-            margin: 60px 0 30px 0;
-        }
-
-        .warning-text {
-            color: #e74c3c;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        .warning-button {
-            display: inline-block;
-            background-color: #e74c3c;
-            color: white;
-            padding: 12px 25px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-
-        .warning-button:hover {
-            background-color: #c0392b;
         }
 
         /* 留言项样式 */
         .message-item {
-            border-bottom: 1px solid #e2e8f0;
-            padding: 15px 0;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            padding: 20px 0;
+            transition: background-color 0.3s ease;
+        }
+
+        .message-item:hover {
+            background-color: rgba(52, 152, 219, 0.05);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 0 -10px;
         }
 
         .message-item:last-child {
@@ -249,48 +305,153 @@
 
         .message-header {
             display: flex;
-            justify-content: between;
+            justify-content: space-between;
             align-items: center;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
 
         .message-author {
             font-weight: bold;
             color: #3498db;
+            font-size: 1.1rem;
         }
 
         .message-time {
             color: #7f8c8d;
             font-size: 0.9rem;
+            background: rgba(127, 140, 141, 0.1);
+            padding: 4px 10px;
+            border-radius: 12px;
         }
 
         .message-content {
             color: #2c3e50;
             line-height: 1.6;
+            font-size: 1.05rem;
         }
 
-        @media (max-width: 600px) {
+        /* 警告按钮样式 */
+        .warning-button-container {
+            text-align: center;
+            margin: 60px 0 30px 0;
+            padding: 30px !important;
+        }
+
+        .warning-text {
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .warning-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.3);
+        }
+
+        .warning-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
             body {
-                padding: 15px 10px;
+                padding: 20px 15px;
             }
             
             .site-title {
-                font-size: 2rem;
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
             }
             
             .link-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .download-links {
                 flex-direction: column;
             }
             
-            .link-item a {
-                justify-content: center;
+            .download-links a {
+                text-align: center;
+            }
+            
+            .message-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .glass-effect {
+                padding: 20px;
             }
         }
 
+        @media (max-width: 480px) {
+            .site-title {
+                font-size: 1.8rem;
+            }
+            
+            .notice {
+                font-size: 1rem;
+            }
+            
+            .open-game-button,
+            .warning-button {
+                padding: 12px 25px;
+                font-size: 1.1rem;
+            }
+        }
+
+        /* 浏览器兼容性 */
         @supports not (backdrop-filter: blur(8px)) {
             .glass-effect {
-                background-color: rgba(255, 255, 255, 0.9);
+                background-color: rgba(255, 255, 255, 0.95);
             }
+        }
+
+        /* 加载动画 */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* 成功/错误状态 */
+        .success {
+            background-color: rgba(46, 204, 113, 0.1);
+            color: #27ae60;
+            border: 1px solid rgba(46, 204, 113, 0.3);
+        }
+
+        .error {
+            background-color: rgba(231, 76, 60, 0.1);
+            color: #c0392b;
+            border: 1px solid rgba(231, 76, 60, 0.3);
         }
     </style>
 </head>
@@ -302,64 +463,63 @@
         <!-- 项目下载区 -->
         <h2 class="section-title">项目下载</h2>
         <ul class="project-list">
-            <!-- 项目列表保持不变 -->
             <li class="project-item glass-effect">
                 <div class="project-name">jyn作业查看器</div>
                 <div class="download-links">
-                    <a href="https://noah0627.github.io/files/dhy/jyn作业查看器.exe">C++版</a>
-                    <a href="https://noah0627.github.io/files/dhy/HomeworkCheckerCs.zip">C#版(比C++更狠，感兴趣可以看)</a>
+                    <a href="https://noah0627.github.io/files/dhy/jyn作业查看器.exe" target="_blank">C++版</a>
+                    <a href="https://noah0627.github.io/files/dhy/HomeworkCheckerCs.zip" target="_blank">C#版(比C++更狠，感兴趣可以看)</a>
                 </div>
             </li>
             
             <li class="project-item glass-effect">
                 <div class="download-links">
-                    <a href="https://noah0627.github.io/files/dhy/kzsgc.mp4">匡zs鬼畜视频</a>
+                    <a href="https://noah0627.github.io/files/dhy/kzsgc.mp4" target="_blank">匡zs鬼畜视频</a>
                 </div>
             </li>
             
             <li class="project-item glass-effect">
                 <div class="download-links">
-                    <a href="https://noah0627.github.io/files/dhy/连续打印器.exe">C++连续打印器(含有音乐)</a>
+                    <a href="https://noah0627.github.io/files/dhy/连续打印器.exe" target="_blank">C++连续打印器(含有音乐)</a>
                 </div>
             </li>
             
             <li class="project-item glass-effect">
                 <div class="download-links">
-                    <a href="https://noah0627.github.io/files/dhy/readme.txt">readme</a>
+                    <a href="https://noah0627.github.io/files/dhy/readme.txt" target="_blank">readme</a>
                 </div>
             </li>
             
             <li class="project-item glass-effect">
                 <div class="project-name">音乐资源包(适配1.20.1)</div>
                 <div class="download-links">
-                    <a href="https://noah0627.github.io/files/MusicResourcePacks/music1.zip">1.0</a>
-                    <a href="https://noah0627.github.io/files/MusicResourcePacks/music2.zip">2.0</a>
-                    <a href="https://noah0627.github.io/files/MusicResourcePacks/music3.zip">3.0</a>
-                    <a href="https://noah0627.github.io/files/MusicResourcePacks/kzsmusic.zip">匡zs鬼畜资源包</a>
+                    <a href="https://noah0627.github.io/files/MusicResourcePacks/music1.zip" target="_blank">1.0</a>
+                    <a href="https://noah0627.github.io/files/MusicResourcePacks/music2.zip" target="_blank">2.0</a>
+                    <a href="https://noah0627.github.io/files/MusicResourcePacks/music3.zip" target="_blank">3.0</a>
+                    <a href="https://noah0627.github.io/files/MusicResourcePacks/kzsmusic.zip" target="_blank">匡zs鬼畜资源包</a>
                 </div>
             </li>
 
             <li class="project-item glass-effect">
                 <div class="project-name">挑战系列</div>
                 <div class="download-links">
-                    <a href="https://noah0627.github.io/files/longHelloWorld.zip">超过10万行的HelloWorld</a>
+                    <a href="https://noah0627.github.io/files/longHelloWorld.zip" target="_blank">超过10万行的HelloWorld</a>
                 </div>
             </li>
             
             <li class="project-item glass-effect">
                 <div class="project-name">XDF课堂管理工具</div>
                 <div class="download-links">
-                    <a href="https://noah0627.github.io/files/XDFClassTools/XDFClassTools2.0.0.zip">2.0.0版下载</a>
-                    <a href="https://noah0627.github.io/files/XDFClassTools/XDFClassTools2.1.0.zip">2.1.0版下载</a>
+                    <a href="https://noah0627.github.io/files/XDFClassTools/XDFClassTools2.0.0.zip" target="_blank">2.0.0版下载</a>
+                    <a href="https://noah0627.github.io/files/XDFClassTools/XDFClassTools2.1.0.zip" target="_blank">2.1.0版下载</a>
                 </div>
             </li>
             
             <li class="project-item glass-effect">
                 <div class="project-name">我做的其他项目(除标注外都是根据XDFPython课程修改,编译版源代码在Github上)</div>
                 <div class="download-links">
-                    <a href="https://noah0627.github.io/files/encrypt.zip">凯撒加密</a>
-                    <a href="https://noah0627.github.io/files/PyModIns_Release2.0.2_x64.exe">Python模块安装器(自制,编译版)</a>
-                    <a href="https://noah0627.github.io/files/简洁学习助手.py">比赛项目(学习助手,自制)</a>
+                    <a href="https://noah0627.github.io/files/encrypt.zip" target="_blank">凯撒加密</a>
+                    <a href="https://noah0627.github.io/files/PyModIns_Release2.0.2_x64.exe" target="_blank">Python模块安装器(自制,编译版)</a>
+                    <a href="https://noah0627.github.io/files/简洁学习助手.py" target="_blank">比赛项目(学习助手,自制)</a>
                 </div>
             </li>
         </ul>
@@ -369,14 +529,13 @@
         <div class="game-container glass-effect">
             <p>点击下方按钮直接打开游戏页面</p>
             <a href="https://noah0627.github.io/games" class="open-game-button" target="_blank">打开游戏页面</a>
-            <p style="margin-top: 10px; font-size: 14px; color: #4a5568;">(将在新窗口打开)</p>
+            <p style="margin-top: 15px; font-size: 14px; color: #4a5568;">(将在新窗口打开)</p>
         </div>
 
         <!-- 外部链接区 -->
         <div class="external-links">
             <h2 class="section-title">外部链接</h2>
             <ul class="link-list">
-                <!-- 外部链接保持不变 -->
                 <li class="link-item">
                     <a href="https://space.bilibili.com/1722310137" target="_blank" class="glass-effect">
                         <img src="https://www.bilibili.com/favicon.ico" alt="B站图标" class="link-icon">
@@ -413,17 +572,17 @@
                 <div class="note-title">提交留言</div>
             </div>
             <form id="noteSubmitForm" style="margin-top: 15px;">
-                <div style="margin-bottom: 15px;">
+                <div style="margin-bottom: 20px;">
                     <label for="noteAuthor">昵称</label>
                     <input type="text" id="noteAuthor" name="author" required placeholder="请输入你的昵称">
                 </div>
-                <div style="margin-bottom: 15px;">
+                <div style="margin-bottom: 20px;">
                     <label for="noteContentInput">留言内容</label>
                     <textarea id="noteContentInput" name="content" required rows="4" placeholder="请输入你的留言（不超过500字）"></textarea>
-                    <span id="wordCount" style="display: block; margin-top: 5px; font-size: 14px; color: #64748b;">0/500字</span>
+                    <span id="wordCount" style="display: block; margin-top: 8px; font-size: 14px; color: #64748b;">0/500字</span>
                 </div>
-                <button type="submit" class="open-game-button" style="margin-top: 0;">提交留言</button>
-                <div id="submitResult" style="margin-top: 10px; font-size: 14px; font-weight: 600;"></div>
+                <button type="submit" class="open-game-button" style="margin-top: 0; width: 100%;">提交留言</button>
+                <div id="submitResult" style="margin-top: 15px; font-size: 16px; font-weight: 600;"></div>
             </form>
         </div>
 
@@ -446,36 +605,15 @@
     </div>
 
     <script>
-        // 配置信息
+        // 配置信息 - 需要替换为你的实际API地址
         const CONFIG = {
-            // 留言文件路径
             NOTE_FILE_URL: 'https://noah0627.github.io/files/website/note.txt',
-            // GitHub API 配置（需要设置个人访问令牌）
-            GITHUB_API: {
-                REPO: 'noah0627/noah0627.github.io',
-                PATH: 'files/website/note.txt',
-                TOKEN: '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' // 需要在此处填入GitHub个人访问令牌
-            }
-        };
-
-        // 工具函数
-        const utils = {
-            // 格式化时间
-            formatTime: (date) => {
-                return new Date(date).toLocaleString('zh-CN');
-            },
-            
-            // 转义HTML
-            escapeHtml: (text) => {
-                const div = document.createElement('div');
-                div.textContent = text;
-                return div.innerHTML;
-            }
+            // 替换为你的Vercel部署地址，例如：https://your-app.vercel.app/api/submit-message
+            API_ENDPOINT: 'https://你的应用名.vercel.app/api/submit-message'
         };
 
         // 留言管理器
         const messageManager = {
-            // 加载留言
             async loadMessages() {
                 try {
                     const response = await fetch(CONFIG.NOTE_FILE_URL + '?t=' + Date.now());
@@ -486,7 +624,7 @@
                     this.displayMessages(messages);
                     
                     document.getElementById('noteUpdateTime').textContent = 
-                        `最后更新: ${utils.formatTime(new Date())}`;
+                        `最后更新: ${new Date().toLocaleString('zh-CN')}`;
                 } catch (error) {
                     console.error('加载留言失败:', error);
                     document.getElementById('noteContent').innerHTML = 
@@ -494,7 +632,6 @@
                 }
             },
             
-            // 解析留言文本
             parseMessages(text) {
                 if (!text.trim()) return [];
                 
@@ -511,10 +648,9 @@
                     }
                 }
                 
-                return messages.reverse(); // 最新的留言显示在最前面
+                return messages.reverse();
             },
             
-            // 显示留言
             displayMessages(messages) {
                 const container = document.getElementById('noteContent');
                 
@@ -528,10 +664,10 @@
                     html += `
                         <div class="message-item">
                             <div class="message-header">
-                                <span class="message-author">${utils.escapeHtml(msg.author)}</span>
-                                <span class="message-time">${utils.escapeHtml(msg.time)}</span>
+                                <span class="message-author">${this.escapeHtml(msg.author)}</span>
+                                <span class="message-time">${this.escapeHtml(msg.time)}</span>
                             </div>
-                            <div class="message-content">${utils.escapeHtml(msg.content)}</div>
+                            <div class="message-content">${this.escapeHtml(msg.content)}</div>
                         </div>
                     `;
                 });
@@ -539,54 +675,34 @@
                 container.innerHTML = html;
             },
             
-            // 添加新留言（需要GitHub API支持）
+            escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            },
+            
             async addMessage(author, content) {
-                if (!CONFIG.GITHUB_API.TOKEN) {
-                    throw new Error('未配置GitHub访问令牌，无法提交留言');
-                }
-                
                 try {
-                    // 1. 获取当前文件内容
-                    const fileResponse = await fetch(
-                        `https://api.github.com/repos/${CONFIG.GITHUB_API.REPO}/contents/${CONFIG.GITHUB_API.PATH}`,
-                        {
-                            headers: {
-                                'Authorization': `token ${CONFIG.GITHUB_API.TOKEN}`,
-                                'Accept': 'application/vnd.github.v3+json'
-                            }
-                        }
-                    );
+                    console.log('提交留言到:', CONFIG.API_ENDPOINT);
+                    const response = await fetch(CONFIG.API_ENDPOINT, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            author: author,
+                            content: content
+                        })
+                    });
                     
-                    if (!fileResponse.ok) throw new Error('无法获取文件内容');
+                    const result = await response.json();
+                    console.log('API响应:', result);
                     
-                    const fileData = await fileResponse.json();
-                    const currentContent = atob(fileData.content);
+                    if (!response.ok) {
+                        throw new Error(result.error || '提交失败');
+                    }
                     
-                    // 2. 构建新内容
-                    const newMessage = `作者:${author}\n时间:${utils.formatTime(new Date())}\n内容:${content}\n\n`;
-                    const newContent = currentContent + newMessage;
-                    
-                    // 3. 更新文件
-                    const updateResponse = await fetch(
-                        `https://api.github.com/repos/${CONFIG.GITHUB_API.REPO}/contents/${CONFIG.GITHUB_API.PATH}`,
-                        {
-                            method: 'PUT',
-                            headers: {
-                                'Authorization': `token ${CONFIG.GITHUB_API.TOKEN}`,
-                                'Accept': 'application/vnd.github.v3+json',
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({
-                                message: `添加新留言 - ${author}`,
-                                content: btoa(unescape(encodeURIComponent(newContent))),
-                                sha: fileData.sha
-                            })
-                        }
-                    );
-                    
-                    if (!updateResponse.ok) throw new Error('提交留言失败');
-                    
-                    return true;
+                    return result;
                 } catch (error) {
                     console.error('提交留言失败:', error);
                     throw error;
@@ -624,28 +740,29 @@
                     // 验证
                     if (!author || !content) {
                         resultDiv.textContent = '请填写昵称和留言内容！';
-                        resultDiv.style.color = '#e74c3c';
+                        resultDiv.className = 'error';
                         return;
                     }
                     
                     if (content.length > 500) {
                         resultDiv.textContent = '留言内容不能超过500字！';
-                        resultDiv.style.color = '#e74c3c';
+                        resultDiv.className = 'error';
                         return;
                     }
                     
                     // 显示提交中状态
                     const submitBtn = form.querySelector('button[type="submit"]');
                     const originalText = submitBtn.textContent;
-                    submitBtn.textContent = '提交中...';
+                    submitBtn.innerHTML = '<span class="loading"></span>提交中...';
                     submitBtn.disabled = true;
+                    resultDiv.textContent = '';
+                    resultDiv.className = '';
                     
                     try {
-                        // 尝试使用GitHub API提交
                         await messageManager.addMessage(author, content);
                         
                         resultDiv.textContent = '留言提交成功！页面将自动刷新...';
-                        resultDiv.style.color = '#2ecc71';
+                        resultDiv.className = 'success';
                         
                         // 清空表单
                         form.reset();
@@ -659,7 +776,7 @@
                         
                     } catch (error) {
                         resultDiv.textContent = '留言提交失败：' + error.message;
-                        resultDiv.style.color = '#e74c3c';
+                        resultDiv.className = 'error';
                     } finally {
                         submitBtn.textContent = originalText;
                         submitBtn.disabled = false;
