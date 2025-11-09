@@ -1,0 +1,7 @@
+# wrangler.toml
+name = "noah-website"
+compatibility_date = "2024-11-09"
+pages_build_output_dir = "."
+
+[env.production.vars]
+GITHUB_TOKEN = "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"
